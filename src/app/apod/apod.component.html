@@ -1,0 +1,22 @@
+<div *ngIf="apod">
+
+  <button *ngIf="date" routerLink="/apod/{{ date }}">Next</button>
+
+  <h1>{{ apod.title }}</h1>
+
+  <img *ngIf="apod.media_type==='image'" id="apodImg" src="{{ apod.url }}" alt="{{ apod.title }}">
+
+  <div *ngIf="apod.media_type==='video'" id="apodVideo">
+    <iframe [src]='apod.url | safe' frameborder=0 allowfullscreen></iframe>
+  </div>
+
+  <div>
+    <span id="apodCopy" *ngIf="apod.copyright">{{ apod.copyright }}</span>
+    <br>
+    <span id="apodDate">{{ apod.date | date:medium }}</span>
+  </div>
+
+  <div id="apodDesc">{{ apod.explanation }}</div>
+
+</div>
+
